@@ -67,6 +67,7 @@ public class ExportAction {
                         .addExtensionFilter(FileFilterConverter.exporterToExtensionFilter(Globals.exportFactory.getExporters()))
                         .withDefaultExtension(Globals.prefs.get(JabRefPreferences.LAST_USED_EXPORT))
                         .withInitialDirectory(Globals.prefs.get(JabRefPreferences.EXPORT_WORKING_DIRECTORY))
+                        .withInitialFileName("export.html")
                         .build();
                 DialogService dialogService = new FXDialogService();
                 DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showFileSaveDialog(fileDialogConfiguration)
