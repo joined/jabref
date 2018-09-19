@@ -58,7 +58,7 @@ public class FileDialogConfiguration {
         private final List<FileChooser.ExtensionFilter> extensionFilters = new ArrayList<>();
         private Path initialDirectory;
         private FileChooser.ExtensionFilter defaultExtension;
-        private String initialFileName;
+        private String initialFileName = "export.html";
 
         public FileDialogConfiguration build() {
             return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, initialFileName);
