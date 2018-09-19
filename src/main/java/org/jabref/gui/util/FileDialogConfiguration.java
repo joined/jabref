@@ -60,15 +60,19 @@ public class FileDialogConfiguration {
         private final List<FileChooser.ExtensionFilter> extensionFilters = new ArrayList<>();
         private Path initialDirectory;
         private FileChooser.ExtensionFilter defaultExtension;
-        private String initialFileName = "export.html";
+        private String initialFileName;
 
         public String getCurrentLocalDateTimeStamp() {
             return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss"));
         }
 
         public FileDialogConfiguration build() {
-            String defaultFileName = getCurrentLocalDateTimeStamp();
-            return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, defaultFileName);
+            if (this.initialFileName == null) {
+                return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, initialFileName);
+            } else {
+                String defaultFileName = getCurrentLocalDateTimeStamp();
+                return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, defaultFileName);
+            }
         }
 
         public Builder withInitialDirectory(Path directory) {
