@@ -3,6 +3,8 @@ package org.jabref.gui.util;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -60,8 +62,13 @@ public class FileDialogConfiguration {
         private FileChooser.ExtensionFilter defaultExtension;
         private String initialFileName = "export.html";
 
+        public String getCurrentLocalDateTimeStamp() {
+            return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss"));
+        }
+
         public FileDialogConfiguration build() {
-            return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, initialFileName);
+            String defaultFileName = getCurrentLocalDateTimeStamp();
+            return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, defaultFileName);
         }
 
         public Builder withInitialDirectory(Path directory) {
