@@ -62,17 +62,11 @@ public class FileDialogConfiguration {
         private FileChooser.ExtensionFilter defaultExtension;
         private String initialFileName;
 
-        public String getCurrentLocalDateTimeStamp() {
-            return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss"));
-        }
-
         public FileDialogConfiguration build() {
-            if (this.initialFileName == null) {
-                return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, initialFileName);
-            } else {
-                String defaultFileName = getCurrentLocalDateTimeStamp();
-                return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, defaultFileName);
+            if (initialFileName == null) {
+                initialFileName = "exported_references";
             }
+            return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, initialFileName);
         }
 
         public Builder withInitialDirectory(Path directory) {
