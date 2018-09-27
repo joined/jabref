@@ -22,7 +22,7 @@ public class FileDialogConfiguration {
     private FileChooser.ExtensionFilter selectedExtensionFilter;
 
     private FileDialogConfiguration(Path initialDirectory, List<FileChooser.ExtensionFilter> extensionFilters,
-                                    FileChooser.ExtensionFilter defaultExtension, String initialFileName) {
+            FileChooser.ExtensionFilter defaultExtension, String initialFileName) {
         this.initialDirectory = initialDirectory;
         this.extensionFilters = Objects.requireNonNull(extensionFilters);
         this.defaultExtension = defaultExtension;
@@ -135,8 +135,8 @@ public class FileDialogConfiguration {
 
         public Builder addExtensionFilter(FileType... fileTypes) {
             Stream.of(fileTypes)
-                    .map(FileFilterConverter::toExtensionFilter)
-                    .forEachOrdered(this::addExtensionFilter);
+                .map(FileFilterConverter::toExtensionFilter)
+                .forEachOrdered(this::addExtensionFilter);
             return this;
         }
 
