@@ -63,11 +63,21 @@ public class ExportAction {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Globals.exportFactory = Globals.prefs.getExporterFactory(Globals.journalAbbreviationLoader);
-                FileDialogConfiguration fileDialogConfiguration = new FileDialogConfiguration.Builder()
+
+                FileDialogConfiguration.Builder builder = new FileDialogConfiguration.Builder()
                         .addExtensionFilter(FileFilterConverter.exporterToExtensionFilter(Globals.exportFactory.getExporters()))
                         .withDefaultExtension(Globals.prefs.get(JabRefPreferences.LAST_USED_EXPORT))
-                        .withInitialDirectory(Globals.prefs.get(JabRefPreferences.EXPORT_WORKING_DIRECTORY))
-                        .build();
+                        .withInitialDirectory(Globals.prefs.get(JabRefPreferences.EXPORT_WORKING_DIRECTORY));
+
+                if (selectedOnly) {
+                    List<BibEntry> entries = frame.getCurrentBasePanel().getSelectedEntries();
+                    if (entries.size() == 1) {
+                        BibEntry entry = entries.get(0);
+                        builder = builder.withInitialFileName(entry.getCiteKey() + ".html");
+                    }
+                }
+
+                FileDialogConfiguration fileDialogConfiguration = builder.build();
                 DialogService dialogService = new FXDialogService();
                 DefaultTaskExecutor.runInJavaFXThread(() -> dialogService.showFileSaveDialog(fileDialogConfiguration)
                         .ifPresent(path -> export(path, fileDialogConfiguration.getSelectedExtensionFilter(), Globals.exportFactory.getExporters())));
