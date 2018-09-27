@@ -3,8 +3,6 @@ package org.jabref.gui.util;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +22,7 @@ public class FileDialogConfiguration {
     private FileChooser.ExtensionFilter selectedExtensionFilter;
 
     private FileDialogConfiguration(Path initialDirectory, List<FileChooser.ExtensionFilter> extensionFilters,
-            FileChooser.ExtensionFilter defaultExtension, String initialFileName) {
+                                    FileChooser.ExtensionFilter defaultExtension, String initialFileName) {
         this.initialDirectory = initialDirectory;
         this.extensionFilters = Objects.requireNonNull(extensionFilters);
         this.defaultExtension = defaultExtension;
@@ -64,7 +62,7 @@ public class FileDialogConfiguration {
 
         public FileDialogConfiguration build() {
             if (initialFileName == null) {
-                initialFileName = "exported_references";
+                initialFileName = "ExportedReferences.html";
             }
             return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, initialFileName);
         }
@@ -137,8 +135,8 @@ public class FileDialogConfiguration {
 
         public Builder addExtensionFilter(FileType... fileTypes) {
             Stream.of(fileTypes)
-                  .map(FileFilterConverter::toExtensionFilter)
-                  .forEachOrdered(this::addExtensionFilter);
+                    .map(FileFilterConverter::toExtensionFilter)
+                    .forEachOrdered(this::addExtensionFilter);
             return this;
         }
 
