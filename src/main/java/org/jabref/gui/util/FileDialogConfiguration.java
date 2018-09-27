@@ -61,6 +61,9 @@ public class FileDialogConfiguration {
         private String initialFileName;
 
         public FileDialogConfiguration build() {
+            if (initialFileName == null) {
+                initialFileName = "ExportedReferences.html";
+            }
             return new FileDialogConfiguration(initialDirectory, extensionFilters, defaultExtension, initialFileName);
         }
 
