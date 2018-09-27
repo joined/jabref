@@ -135,8 +135,8 @@ public class FileDialogConfiguration {
 
         public Builder addExtensionFilter(FileType... fileTypes) {
             Stream.of(fileTypes)
-                .map(FileFilterConverter::toExtensionFilter)
-                .forEachOrdered(this::addExtensionFilter);
+                  .map(FileFilterConverter::toExtensionFilter)
+                  .forEachOrdered(this::addExtensionFilter);
             return this;
         }
 
