@@ -13,6 +13,7 @@ public enum SpecialFieldValue {
     PRIORITY_LOW("prio3"),
     QUALITY_ASSURED("qualityAssured"),
     CLEAR_RANK(null),
+    RANK_0("rank0"),
     RANK_1("rank1"),
     RANK_2("rank2"),
     RANK_3("rank3"),
