@@ -36,6 +36,8 @@ public class SpecialFieldValueViewModel {
                 return IconTheme.JabRefIcon.QUALITY_ASSURED.getSmallIcon();
             case CLEAR_RANK:
                 return null;
+            case RANK_0:
+                return IconTheme.JabRefIcon.RANK0.getSmallIcon();
             case RANK_1:
                 return IconTheme.JabRefIcon.RANK1.getSmallIcon();
             case RANK_2:
@@ -82,6 +84,8 @@ public class SpecialFieldValueViewModel {
                 return Localization.lang("Toggle quality assured");
             case CLEAR_RANK:
                 return Localization.lang("Clear rank");
+            case RANK_0:
+                return "";
             case RANK_1:
                 return "";
             case RANK_2:
@@ -122,6 +126,8 @@ public class SpecialFieldValueViewModel {
                 return Localization.lang("Toggle quality assured");
             case CLEAR_RANK:
                 return Localization.lang("No rank information");
+            case RANK_0:
+                return Localization.lang("Zero stars");
             case RANK_1:
                 return Localization.lang("One star");
             case RANK_2:
@@ -162,6 +168,8 @@ public class SpecialFieldValueViewModel {
                 return "toggleQualityAssured";
             case CLEAR_RANK:
                 return "clearRank";
+            case RANK_0:
+                return "setRank0";
             case RANK_1:
                 return "setRank1";
             case RANK_2:

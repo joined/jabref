@@ -26,6 +26,7 @@ public enum SpecialField {
 
     RANKING("ranking",
         SpecialFieldValue.CLEAR_RANK,
+        SpecialFieldValue.RANK_0,
         SpecialFieldValue.RANK_1,
         SpecialFieldValue.RANK_2,
         SpecialFieldValue.RANK_3,
